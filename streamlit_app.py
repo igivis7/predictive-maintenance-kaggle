@@ -4,10 +4,9 @@ import altair as alt
 import numpy as np 
 import joblib
 alt.data_transformers.disable_max_rows()
-st.set_page_config(page_title = "Maintenance Predictions", page_icon= "⚙")
+
 # Headings
-st.title("🛠️ Predictive Maintenance for Industrial Devices 🔍")
-st.write("*Empowering Manufacturing Efficiency through Smart Maintenance Predictions*")
+st.title("Predictive Maintenance to detect a Machine Failure")
 st.divider()
 
 # Sidebar Input Details
@@ -33,10 +32,9 @@ def user_input_features():
 input_df = user_input_features()
 input_df_copy = input_df.copy()
 
-tab1, tab2, tab3 = st.tabs(['🔍 Maintenance Prediction', '📊 Result Explanation', '🌐 About the Project'])
+tab1, tab2, tab3 = st.tabs(['Maintenance Prediction', 'Result Explanation', 'About the Project'])
 # Tab 1
 with tab1:
-    st.write("Welcome to the Predictive Maintenance for Industrial Devices web application! This web app predicts maintenance needs by analyzing data from industrial devices, ensuring proactive and efficient operations.")
     st.info('Adjust the sliders or select values in the **sidebar** to input essential operational data', icon="ℹ️")
     st.subheader('Input Details')
     st.write(f"""
