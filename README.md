@@ -33,3 +33,8 @@ If at least one of the above failure modes is true, the process fails and the 'm
 ## About the Dataset
 
 The synthetic dataset provided in this application reflects real predictive maintenance encountered in the industry to the best of our knowledge. The dataset contains 10,000 data points with 14 features. It includes a mix of low, medium, and high-quality variants, each with a specific serial number. The features represent various parameters like air temperature, process temperature, rotational speed, torque, and tool wear.
+
+## Similar projects
+
+- https://github.com/VivekAgrawl/predictive-maintenance-webapp
+- https://github.com/RushikeshKothawade07/predictive-maintenance-ML/tree/main
