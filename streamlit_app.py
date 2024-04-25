@@ -32,7 +32,7 @@ def user_input_features():
 input_df = user_input_features()
 input_df_copy = input_df.copy()
 
-tab1, tab2, tab3 = st.tabs(['Maintenance Prediction', 'Result Explanation', 'About the Project'])
+tab1, tab2 = st.tabs(['Machine Failure Prediction', 'Data info'])
 # Tab 1
 with tab1:
     st.info('Adjust the sliders or select values in the **sidebar** to input essential operational data', icon="ℹ️")
@@ -78,94 +78,6 @@ with tab1:
 
 # Tab 2
 with tab2:
-    st.write("*See how your input data aligns with the predictive analysis. Understand where your devices stand in comparison to the data, facilitating informed decisions on maintenance priorities.*")
-    input_feature = st.selectbox('Select Feature',('Type', 'Air Temperature', 'Process Temperature', 'Rotational Speed', 'Torque', 'Tool Wear'))
-    st.write(" ")
-    
-    data = pd.read_csv("predictive_maintenance.csv")
-    data.columns = ['UDI', 'Product ID', 'Type', 'Air Temperature', 'Process Temperature', 'Rotational Speed', 'Torque', 'Tool wear', 'Machine failure', 'Failure type']
-    data = data.drop(['UDI', 'Product ID', 'Failure type'], axis = 1)
-    data = data[data['Machine failure'] == prediction[0]]
-
-    if input_feature == 'Type':
-        chart = alt.Chart(data).mark_bar().encode(
-            alt.X('Type:O'),
-            alt.Y("count()", title = "Counts"),
-            color=alt.condition(
-                alt.datum.Type == input_df_copy['Type'].values[0],
-                alt.value('#ff4c4c'), 
-                alt.value('steelblue'))
-        )
-        st.altair_chart(chart, use_container_width = True)
-    elif input_feature == 'Air Temperature':
-        base = alt.Chart(data)
-
-        bar = base.mark_bar().encode(
-            alt.X('Air Temperature:Q', title = 'Air Temperature (K)').bin(maxbins = 15),
-            alt.Y('count()', title = "Frequency"),
-            color = alt.value('steelblue')
-        )
-        rule = base.mark_rule(color='#ff4c4c').encode(
-            x = alt.datum(input_df_copy['Air Temperature'].values[0]),
-            size=alt.value(3)
-        )
-        st.altair_chart(bar + rule , use_container_width = True)
-    elif input_feature == 'Process Temperature':
-        base = alt.Chart(data)
-
-        bar = base.mark_bar().encode(
-            alt.X('Process Temperature:Q', title = 'Process Temperature (K)').bin(maxbins = 15),
-            alt.Y('count()', title = "Frequency"),
-            color = alt.value('steelblue')
-        )
-        rule = base.mark_rule(color='#ff4c4c').encode(
-            x = alt.datum(input_df_copy['Process Temperature'].values[0]),
-            size=alt.value(3)
-        )
-        st.altair_chart(bar + rule , use_container_width = True)   
-    elif input_feature == 'Rotational Speed':
-        base = alt.Chart(data)
-
-        bar = base.mark_bar().encode(
-            alt.X('Rotational Speed:Q', title = 'Rotational Speed (RPM)').bin(maxbins = 15),
-            alt.Y('count()', title = "Frequency"),
-            color = alt.value('steelblue')
-        )
-        rule = base.mark_rule(color='#ff4c4c').encode(
-            x = alt.datum(input_df_copy['Rotational Speed'].values[0]),
-            size=alt.value(3)
-        )
-        st.altair_chart(bar + rule , use_container_width = True) 
-    elif input_feature == 'Torque':
-        base = alt.Chart(data)
-
-        bar = base.mark_bar().encode(
-            alt.X('Torque:Q', title = 'Torque (Nm)').bin(maxbins = 15),
-            alt.Y('count()', title = "Frequency"),
-            color = alt.value('steelblue')
-        )
-        rule = base.mark_rule(color='#ff4c4c').encode(
-            x = alt.datum(input_df_copy['Torque'].values[0]),
-            size=alt.value(3)
-        )
-        st.altair_chart(bar + rule , use_container_width = True) 
-    else:
-        base = alt.Chart(data)
-
-        bar = base.mark_bar().encode(
-            alt.X('Tool wear:Q', title = 'Tool Wear (min)').bin(maxbins = 15),
-            alt.Y('count()', title = "Frequency"),
-            color = alt.value('steelblue')
-        )
-        rule = base.mark_rule(color='#ff4c4c').encode(
-            x = alt.datum(input_df_copy['Tool wear'].values[0]),
-            size=alt.value(3)
-        )
-        st.altair_chart(bar + rule , use_container_width = True) 
-
-
-# Tab 3
-with tab3:
     st.write("""
         Welcome to an innovative project designed to enhance maintenance efficiency for manufacturing companies! Our machine learning model, incorporated into a user-friendly web app, predicts maintenance needs in real time by analyzing data from industrial devices. This proactive solution empowers companies to tackle issues before they cause downtime and increased costs.
 
