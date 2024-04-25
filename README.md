@@ -8,6 +8,10 @@ More information about the dataset is [here](https://archive.ics.uci.edu/dataset
 
 The application is built using a Random Forest model to classify whether the machine will experience failure or not based on the provided inputs.
 
+## Stremlit app
+
+The app can be found by the following link:
+[Streamlit app](https://predictive-maintenance-kaggle-apptz2heajozb5kdkvelcxk.streamlit.app/)
 
 ## Parameters description
 
