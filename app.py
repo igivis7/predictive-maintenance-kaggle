@@ -186,17 +186,9 @@ with tab3:
 
 st.write("---")
 
-st.write("""#### About Me""")
-st.write(" ")
-st.write("""
-            I'm Vivek Agrawal, an accomplished data scientist with expertise in data mining, data visualization, and machine learning.
-                 
-            [Portfolio](https://www.vivekagrawal.space) | [Linkedin](https://www.linkedin.com/in/ivivekagrawal) | [Github](https://github.com/VivekAgrawl) | [Kaggle](https://www.kaggle.com/atom1991)
-        """)
-
 # Disclaimer
 st.divider()
 st.caption("""
-        _This web app is intended for practical and showcase purposes only. It is part of a project to demonstrate implementation and may not be suitable for critical or production use. The developer assumes no responsibility for any consequences arising from the use of this application._
+        _This web app is intended for practical and showcase purposes only._
             
 """)
